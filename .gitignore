@@ -38,4 +38,3 @@
 CMakeLists.txt
 /.vscode/
 /.cache/
-/include/
