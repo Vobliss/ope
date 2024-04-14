@@ -33,8 +33,5 @@
 
 /benchmarks/
 /build/
-/scripts/
-/test/
-CMakeLists.txt
 /.vscode/
 /.cache/
