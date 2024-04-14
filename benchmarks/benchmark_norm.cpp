@@ -14,6 +14,13 @@ static void BM_NormalDistribution_Quantile(benchmark::State& state) {
   }
 }
 
+static void BM_NormalDistribution_Sample(benchmark::State& state) {
+  NormalDistribution norm(0.0, 1.0);
+  for (auto _ : state) {
+    norm.sample(10000);
+  }
+}
+
 static void BM_NormalDistribution_PDF(benchmark::State& state) {
   NormalDistribution norm(0.0, 1.0);
   for (auto _ : state) {
@@ -23,6 +30,7 @@ static void BM_NormalDistribution_PDF(benchmark::State& state) {
 
 BENCHMARK(BM_NormalDistribution_CDF);
 BENCHMARK(BM_NormalDistribution_Quantile);
+BENCHMARK(BM_NormalDistribution_Sample);
 BENCHMARK(BM_NormalDistribution_PDF);
 
 int main(int argc, char **argv) {

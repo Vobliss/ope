@@ -2,6 +2,8 @@
 #define QF_STATS_DISTS_DIST_HPP
 
 
+#include <cstddef>
+#include <vector>
 template <typename T>
 class Distribution {
 public:
@@ -9,6 +11,7 @@ public:
 
     virtual double cdf(T x) const = 0;
     virtual double quantile(T p) const = 0;
+    virtual std::vector<double> sample(size_t n) const = 0;
 
 };
 
