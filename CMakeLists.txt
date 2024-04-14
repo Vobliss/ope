@@ -47,15 +47,16 @@ add_dependencies(check tests)
 
 # Set compiler and linker flags for code coverage
 if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 --coverage")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O3 --coverage")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
 endif()
 
-# Uncomment the following lines if you want to use Google Benchmark
-# find_package(benchmark REQUIRED)
-# add_executable(benchmarks benchmarks/benchmark_main.cpp src/bsm_pricer.cpp)
-# target_include_directories(benchmarks PUBLIC
-#     "${PROJECT_BINARY_DIR}"
-#     "${PROJECT_SOURCE_DIR}/include"
-# )
-# target_link_libraries(benchmarks benchmark::benchmark)
+find_package(benchmark REQUIRED)
+add_executable(benchmarks benchmarks/benchmark_norm.cpp src/norm.cpp src/dist.cpp)
+target_include_directories(benchmarks PUBLIC
+    "${PROJECT_BINARY_DIR}"
+    "${PROJECT_SOURCE_DIR}/include"
+)
+target_link_libraries(benchmarks benchmark::benchmark)
+# Set compiler flags for benchmark optimization
+set_target_properties(benchmarks PROPERTIES COMPILE_FLAGS "-O3")
