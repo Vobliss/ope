@@ -16,6 +16,10 @@ TEST(NormalDistribution, Quantile) {
     EXPECT_NEAR(norm.quantile(0.1586553), -1.0, 1e-6);
 }
 
+TEST(NormalDistribution, Entropy) {
+    EXPECT_NEAR(norm.entropy(), 1.4189385, 1e-6);
+}
+
 TEST(NormalDistribution, PDF) {
     EXPECT_NEAR(norm.pdf(0.0), 0.3989423, 1e-6);
     EXPECT_NEAR(norm.pdf(1.0), 0.2419707, 1e-6);

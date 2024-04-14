@@ -12,6 +12,7 @@ public:
     double cdf(double x) const override;
     double quantile(double p) const override;
     std::vector<double> sample(size_t n) const override;
+    double entropy() const override;
     double pdf(double x) const override;
     double mean() const { return mean_; }
     double sd() const { return sd_; }

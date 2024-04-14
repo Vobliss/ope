@@ -9,6 +9,4 @@ ContinuousDistribution<T> cont_dist = ContinuousDistribution<T>();
 template<typename T>
 DiscreteDistribution<T> disc_dist = DiscreteDistribution<T>();
 
-template class Distribution<double>;
-template class ContinuousDistribution<double>;
-template class DiscreteDistribution<double>;
+

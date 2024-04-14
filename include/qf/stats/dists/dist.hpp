@@ -12,6 +12,7 @@ public:
     virtual double cdf(T x) const = 0;
     virtual double quantile(T p) const = 0;
     virtual std::vector<double> sample(size_t n) const = 0;
+    virtual double entropy() const = 0;
 
 };
 

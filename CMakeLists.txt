@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Add the source files to the 'ope' executable
-add_executable(ope src/main.cpp src/norm.cpp src/dist.cpp)
+add_executable(ope src/main.cpp src/norm.cpp src/dist.cpp src/option.cpp src/option_pricer.cpp)
 
 # Specify the directories that the compiler should look in for include files
 target_include_directories(ope PUBLIC
@@ -27,7 +27,7 @@ target_link_libraries(ope PUBLIC ${Boost_LIBRARIES})
 enable_testing()
 
 # Add the source files to the 'tests' executable
-add_executable(tests test/test_norm.cpp src/norm.cpp src/dist.cpp)
+add_executable(tests test/test_norm.cpp src/norm.cpp src/dist.cpp src/option.cpp src/option_pricer.cpp)
 
 # Specify the directories that the compiler should look in for include files for the 'tests' target
 target_include_directories(tests PUBLIC
@@ -52,7 +52,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
 endif()
 
 find_package(benchmark REQUIRED)
-add_executable(benchmarks benchmarks/benchmark_norm.cpp src/norm.cpp src/dist.cpp)
+add_executable(benchmarks benchmarks/benchmark_norm.cpp benchmarks/benchmark_options_pricer.cpp src/norm.cpp src/dist.cpp src/option.cpp src/option_pricer.cpp)
 target_include_directories(benchmarks PUBLIC
     "${PROJECT_BINARY_DIR}"
     "${PROJECT_SOURCE_DIR}/include"
